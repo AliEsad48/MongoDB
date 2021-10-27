@@ -1,0 +1,30 @@
+//=====================================================
+//TEMEL KOMUTLAR
+//=============================
+
+//1)varolan veri tabanlarını listelemek için
+//show dbs;
+
+// 2) Veritabani varsa icine giriyor, yoksa olusturup icine giriyor.
+use("KISILER");
+
+
+//3)içinde bulunduğum aktif kullandığım database i görmek için
+
+db;
+
+//4)aktif olan veritabanını silmek için
+//use("KISILER");
+db.dropDatabase();
+
+//5)aktif olan veritabanında collection oluşturmak için
+use("KISILER");
+db.createCollection("ogrenciler");
+
+//6)
+use("KISILER");
+db.ogrenciler.insertOne({"ad":"Murat","lakap":"Cakir","maas":4000});
+
+
+use("KISILER");
+db.ogrenciler.find().pretty();
