@@ -53,4 +53,4 @@ db.ogrenciler.insertOne({   "ad":"oli",  "soyad":"cin", "tarih": new ISODate() }
 
 use("KISILER");
 var ay =new ISODate().getMonth();
-db.ogrenciler.insertOne({   "ad":"meryem",  "soyad":"berk", "tarih": ay }); //ay ları index sistemine göre sıralıyor yani 9= ekim
+db.ogrenciler.insertOne({"ad":"meryem",  "soyad":"berk", "tarih": ay }); //ay ları index sistemine göre sıralıyor yani 9= ekim
