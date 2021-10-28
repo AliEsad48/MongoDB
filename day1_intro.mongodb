@@ -1,30 +1,56 @@
-//=====================================================
-//TEMEL KOMUTLAR
-//=============================
+//===============================
+//             TEMEL KOMUTLAR
+//=======================
 
-//1)varolan veri tabanlarını listelemek için
+//1 ) varolan veri tabanlarını listelemek için
 //show dbs;
 
-// 2) Veritabani varsa icine giriyor, yoksa olusturup icine giriyor.
+//2) veritabanı oluşturmak ya da varolanın içine girmek için 
 use("KISILER");
 
 
-//3)içinde bulunduğum aktif kullandığım database i görmek için
+//3) içinde bulunduğum aktif kullandığım database i görmek için 
 
 db;
 
-//4)aktif olan veritabanını silmek için
+//4) aktif olan veritabanını silmek için
 //use("KISILER");
 db.dropDatabase();
 
-//5)aktif olan veritabanında collection oluşturmak için
+//5) aktif olan veritabanında collection oluşturmak için
 use("KISILER");
 db.createCollection("ogrenciler");
 
-//6)
+//6) collection (table) a tekli veri ekleme
 use("KISILER");
-db.ogrenciler.insertOne({"ad":"Murat","lakap":"Cakir","maas":4000});
+db.ogrenciler.insertOne({"ad":"Murat", "lakap":"Cakir", "maas":4000});
+
+//7) tüm verileri listelemek için (select gibi )
+use("KISILER");
+db.ogrenciler.find();
+
+//8)collection silme
+use("KISILER");
+db.ogrenciler.drop();
+
+//9) collection a çoklu veri eklemek
+use("KISILER");
+db.ogrenciler.insertMany([
+ {"ad": "Ahmet", "soyad": "Can", "yas": 21},
+ {"ad": "Ali", "soyad": "Can", "yas": 51},
+ {"ad": "Veli", "soyad": "Gel", "yas": 22}] );
+
+//10) tarih eklemek için 
+use("KISILER");
+db.ogrenciler.insertOne({"suanki_tarih ": new Date()});
+
+//Uluslararası Standardizasyon Örgütü (ISO=The International Organization for Standardization ) tarih formatı, belirsizliği ortadan kaldıran sayısal bir takvim tarihini ifade etmenin standart bir yoludur . Örneğin, Kuzey Amerikalılar genellikle tarihten önceki ayı yazarlar. Avrupalılar aydan önceki tarihi 30 Mart 1998 için "30.3. 1998" olarak yazarlar.
+
+use("KISILER");
+db.ogrenciler.insertOne({   "ad":"oli",  "soyad":"cin", "tarih": new ISODate() });
 
 
+
 use("KISILER");
-db.ogrenciler.find().pretty();
+var ay =new ISODate().getMonth();
+db.ogrenciler.insertOne({   "ad":"meryem",  "soyad":"berk", "tarih": ay }); //ay ları index sistemine göre sıralıyor yani 9= ekim
